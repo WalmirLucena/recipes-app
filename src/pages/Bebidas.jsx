@@ -1,8 +1,8 @@
 import React from 'react';
 import Header from '../components/Header';
 
-export default function Comidas() {
+export default function Bebidas() {
   return (
-    <Header title="Comidas" profile search />
+    <Header title="Bebidas" profile search />
   );
 }
