@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import DrinkContext from '../contexts/DrinkContext';
 
 export default function DrinkSearchResults() {
-  const { loading, filteredDrink } = useContext(DrinkContext);
+  const { loadingDrink, filteredDrink } = useContext(DrinkContext);
 
-  if (loading) return <span>Loading...</span>;
+  if (loadingDrink) return <span>Loading...</span>;
 
   return (
     <main>

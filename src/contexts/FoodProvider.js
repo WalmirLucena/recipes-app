@@ -4,7 +4,7 @@ import FoodContext from './FoodContext';
 import fetchFoodAPI from '../helper/fetchFoodAPI';
 
 export default function FoodProvider({ children }) {
-  const [loading, setLoading] = useState(false);
+  const [loadingFood, setLoadingFood] = useState(false);
   const [filteredFood, setFilteredFood] = useState([]);
 
   const fetchFood = async (radio, input) => {
@@ -13,12 +13,12 @@ export default function FoodProvider({ children }) {
     const filteredSlice = await filtered ? filtered.slice(0, MAX_RECIPES) : [];
 
     setFilteredFood(filteredSlice);
-    setLoading(false);
+    setLoadingFood(false);
 
     return filtered;
   };
 
-  const foodContextValues = { loading, setLoading, filteredFood, fetchFood };
+  const foodContextValues = { loadingFood, setLoadingFood, filteredFood, fetchFood };
 
   return (
     <FoodContext.Provider value={ foodContextValues }>
