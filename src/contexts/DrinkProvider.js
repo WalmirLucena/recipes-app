@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DrinkContext from './DrinkContext';
 import fetchDrinkAPI from '../helper/fetchDrinkAPI';
 
@@ -17,6 +17,10 @@ export default function DrinkProvider({ children }) {
 
     return filtered;
   };
+
+  useEffect(() => {
+    fetchDrink('nome', 'mojito');
+  }, []);
 
   const drinkContextValue = { loading, setLoading, filteredDrink, fetchDrink };
 

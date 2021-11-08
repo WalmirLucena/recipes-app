@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FoodContext from './FoodContext';
 import fetchFoodAPI from '../helper/fetchFoodAPI';
 
@@ -17,6 +17,10 @@ export default function FoodProvider({ children }) {
 
     return filtered;
   };
+
+  useEffect(() => {
+    fetchFood('nome', 'a');
+  }, []);
 
   const foodContextValues = { loading, setLoading, filteredFood, fetchFood };
 
