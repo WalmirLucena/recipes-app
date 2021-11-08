@@ -1,3 +1,4 @@
+import { Button } from 'react-bootstrap';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -47,7 +48,8 @@ export default function Login() {
           data-testid="password-input"
         />
       </label>
-      <button
+      <Button
+        variant="warning"
         type="button"
         onClick={ handleLogin }
         disabled={ verifyInfo() }
@@ -55,8 +57,7 @@ export default function Login() {
 
       >
         Entrar
-      </button>
+      </Button>
     </form>
-
   );
 }
