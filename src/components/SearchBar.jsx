@@ -7,10 +7,11 @@ export default function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
   const [searchType, setSearchType] = useState('');
   const { fetchFood } = useContext(FoodContext);
-  const { fetchDrink, setLoading } = useContext(DrinkContext);
+  const { fetchDrink, setLoading, categoryDrink } = useContext(DrinkContext);
   const { pathname } = useLocation();
   const history = useHistory();
 
+  console.log(categoryDrink);
   const handleSearch = async () => {
     const LETTER_ERROR = 'Sua busca deve conter somente 1 (um) caracter';
     const NOT_FOUND = 'Sinto muito, não encontramos nenhuma receita para esses filtros.';
