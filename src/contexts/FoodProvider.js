@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import FoodContext from './FoodContext';
 import fetchFoodAPI from '../helper/fetchFoodAPI';
 import fetchCategoryFoodApi from '../helper/fetchCategoryFoodAPI';
+import fetchFoodByCategory from '../helper/fetchFoodByCategory';
 
 export default function FoodProvider({ children }) {
   const [loading, setLoading] = useState(false);
@@ -35,8 +36,19 @@ export default function FoodProvider({ children }) {
     fetchFood('nome', 'a');
   }, []);
 
+  const fetchByCategoryFood = async (category) => {
+    const MAX_RECIPES = 12;
+    const filtered = await fetchFoodByCategory(category);
+    const filteredSlice = await filtered ? filtered.meals.slice(0, MAX_RECIPES) : [];
+
+    setFilteredFood(filteredSlice);
+    setLoading(false);
+
+    return filtered;
+  };
+
   const foodContextValues = {
-    loading, setLoading, filteredFood, fetchFood, categoryFood };
+    loading, setLoading, filteredFood, fetchFood, categoryFood, fetchByCategoryFood };
 
   return (
     <FoodContext.Provider value={ foodContextValues }>

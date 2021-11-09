@@ -4,22 +4,24 @@ import DrinkContext from '../contexts/DrinkContext';
 import FoodContext from '../contexts/FoodContext';
 
 export default function Categories() {
-  const { categoryFood } = useContext(FoodContext);
-  const { categoryDrink } = useContext(DrinkContext);
+  const { categoryFood, fetchByCategoryFood } = useContext(FoodContext);
+  const { categoryDrink, fetchByCategoryDrink } = useContext(DrinkContext);
   const { pathname } = useLocation();
   let categories = [];
+  let fetchByCategory = [];
 
   if (pathname.includes('/comidas')) {
     categories = categoryFood;
+    fetchByCategory = fetchByCategoryFood;
   }
 
   if (pathname.includes('/bebidas')) {
     categories = categoryDrink;
+    fetchByCategory = fetchByCategoryDrink;
   }
 
   const handleClick = (e) => {
-    /*  const filter = { value }; */
-    console.log(e.target.name);
+    fetchByCategory(e.target.name);
   };
 
   return (

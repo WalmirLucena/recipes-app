@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import DrinkContext from './DrinkContext';
 import fetchDrinkAPI from '../helper/fetchDrinkAPI';
 import fetchCategoryDrinkAPI from '../helper/fetchCategoryDrinkAPI';
+import fetchDrinkByCategory from '../helper/fetchDrinkByCategory';
 
 export default function DrinkProvider({ children }) {
   const [loading, setLoading] = useState(false);
@@ -35,8 +36,19 @@ export default function DrinkProvider({ children }) {
     fetchDrink('letra', 'a');
   }, []);
 
+  const fetchByCategoryDrink = async (category) => {
+    const MAX_RECIPES = 12;
+    const filtered = await fetchDrinkByCategory(category);
+    const filteredSlice = await filtered ? filtered.drinks.slice(0, MAX_RECIPES) : [];
+
+    setFilteredDrink(filteredSlice);
+    setLoading(false);
+
+    return filtered;
+  };
+
   const drinkContextValue = {
-    loading, setLoading, filteredDrink, fetchDrink, categoryDrink };
+    loading, setLoading, filteredDrink, fetchDrink, categoryDrink, fetchByCategoryDrink };
 
   return (
     <DrinkContext.Provider value={ drinkContextValue }>
