@@ -1,27 +1,38 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import DrinkContext from '../contexts/DrinkContext';
 import FoodContext from '../contexts/FoodContext';
 
 export default function Categories() {
-  const { categoryFood, fetchByCategoryFood } = useContext(FoodContext);
-  const { categoryDrink, fetchByCategoryDrink } = useContext(DrinkContext);
+  const [buttonFilter, setButtonFilter] = useState();
+
+  const { categoryFood, fetchByCategoryFood, fetchFood } = useContext(FoodContext);
+  const { categoryDrink, fetchByCategoryDrink, fetchDrink } = useContext(DrinkContext);
   const { pathname } = useLocation();
   let categories = [];
   let fetchByCategory = [];
+  let fetchInitial = [];
 
   if (pathname.includes('/comidas')) {
     categories = categoryFood;
     fetchByCategory = fetchByCategoryFood;
+    fetchInitial = fetchFood;
   }
 
   if (pathname.includes('/bebidas')) {
     categories = categoryDrink;
     fetchByCategory = fetchByCategoryDrink;
+    fetchInitial = fetchDrink;
   }
 
   const handleClick = (e) => {
-    fetchByCategory(e.target.name);
+    if (buttonFilter === e.target.name) {
+      fetchInitial('nome', 'a');
+      setButtonFilter('');
+    } else {
+      setButtonFilter(e.target.name);
+      fetchByCategory(e.target.name);
+    }
   };
 
   return (
