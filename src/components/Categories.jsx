@@ -35,6 +35,10 @@ export default function Categories() {
     }
   };
 
+  const handleAll = () => {
+    fetchInitial('nome', 'a');
+  };
+
   return (
     <div>
       {categories.map(({ strCategory }) => (
@@ -49,6 +53,15 @@ export default function Categories() {
 
         </button>
       ))}
+      <button
+        type="button"
+        name="All"
+        key="All"
+        data-testid="all-category-filter"
+        onClick={ () => handleAll() }
+      >
+        All
+      </button>
     </div>
   );
 }
