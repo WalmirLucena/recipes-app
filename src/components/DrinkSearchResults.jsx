@@ -6,7 +6,7 @@ export default function DrinkSearchResults() {
   const { loading, filteredDrink } = useContext(DrinkContext);
 
   if (loading) return <span>Loading...</span>;
-
+  console.log(filteredDrink);
   return (
     <main>
       {

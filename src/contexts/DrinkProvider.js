@@ -13,7 +13,6 @@ export default function DrinkProvider({ children }) {
     const MAX_RECIPES = 5;
     const category = await fetchCategoryDrinkAPI();
     const filteredCategory = await category ? category.drinks.slice(0, MAX_RECIPES) : [];
-    console.log(filteredCategory);
     setCategoryDrink(filteredCategory);
   };
 
@@ -33,7 +32,7 @@ export default function DrinkProvider({ children }) {
   };
 
   useEffect(() => {
-    fetchDrink('nome', 'c');
+    fetchDrink('letra', 'a');
   }, []);
 
   const drinkContextValue = {

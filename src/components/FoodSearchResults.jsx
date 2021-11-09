@@ -6,7 +6,7 @@ export default function FoodSearchResults() {
   const { loading, filteredFood } = useContext(FoodContext);
 
   if (loading) return <span>Loading...</span>;
-
+  console.log(filteredFood);
   return (
     <main>
       {
