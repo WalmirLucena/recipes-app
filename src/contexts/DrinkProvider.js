@@ -32,8 +32,16 @@ export default function DrinkProvider({ children }) {
     return filtered;
   };
 
+  const fetchInitialDrink = async () => {
+    const MAX_RECIPES = 12;
+    const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
+    const data = await response.json();
+    const filtered = data ? data.drinks.slice(0, MAX_RECIPES) : [];
+    setFilteredDrink(filtered);
+  };
+
   useEffect(() => {
-    fetchDrink('letra', 'a');
+    fetchInitialDrink();
   }, []);
 
   const fetchByCategoryDrink = async (category) => {
@@ -48,7 +56,13 @@ export default function DrinkProvider({ children }) {
   };
 
   const drinkContextValue = {
-    loading, setLoading, filteredDrink, fetchDrink, categoryDrink, fetchByCategoryDrink };
+    loading,
+    setLoading,
+    filteredDrink,
+    fetchDrink,
+    categoryDrink,
+    fetchByCategoryDrink,
+    fetchInitialDrink };
 
   return (
     <DrinkContext.Provider value={ drinkContextValue }>

@@ -32,8 +32,16 @@ export default function FoodProvider({ children }) {
     return filtered;
   };
 
+  const fetchInitialFood = async () => {
+    const MAX_RECIPES = 12;
+    const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
+    const data = await response.json();
+    const filtered = data ? data.meals.slice(0, MAX_RECIPES) : [];
+    setFilteredFood(filtered);
+  };
+
   useEffect(() => {
-    fetchFood('nome', 'a');
+    fetchInitialFood();
   }, []);
 
   const fetchByCategoryFood = async (category) => {
@@ -48,7 +56,13 @@ export default function FoodProvider({ children }) {
   };
 
   const foodContextValues = {
-    loading, setLoading, filteredFood, fetchFood, categoryFood, fetchByCategoryFood };
+    loading,
+    setLoading,
+    filteredFood,
+    fetchFood,
+    categoryFood,
+    fetchByCategoryFood,
+    fetchInitialFood };
 
   return (
     <FoodContext.Provider value={ foodContextValues }>

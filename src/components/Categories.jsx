@@ -6,28 +6,30 @@ import FoodContext from '../contexts/FoodContext';
 export default function Categories() {
   const [buttonFilter, setButtonFilter] = useState();
 
-  const { categoryFood, fetchByCategoryFood, fetchFood } = useContext(FoodContext);
-  const { categoryDrink, fetchByCategoryDrink, fetchDrink } = useContext(DrinkContext);
+  const { categoryFood, fetchByCategoryFood, fetchInitialFood } = useContext(FoodContext);
+  const { categoryDrink,
+    fetchByCategoryDrink,
+    fetchInitialDrink } = useContext(DrinkContext);
   const { pathname } = useLocation();
   let categories = [];
   let fetchByCategory = [];
-  let fetchInitial = [];
+  let fetchInitialPage = [];
 
   if (pathname.includes('/comidas')) {
     categories = categoryFood;
     fetchByCategory = fetchByCategoryFood;
-    fetchInitial = fetchFood;
+    fetchInitialPage = fetchInitialFood;
   }
 
   if (pathname.includes('/bebidas')) {
     categories = categoryDrink;
     fetchByCategory = fetchByCategoryDrink;
-    fetchInitial = fetchDrink;
+    fetchInitialPage = fetchInitialDrink;
   }
 
   const handleClick = (e) => {
     if (buttonFilter === e.target.name) {
-      fetchInitial('nome', 'a');
+      fetchInitialPage();
       setButtonFilter('');
     } else {
       setButtonFilter(e.target.name);
@@ -36,7 +38,7 @@ export default function Categories() {
   };
 
   const handleAll = () => {
-    fetchInitial('nome', 'a');
+    fetchInitialPage();
   };
 
   return (
