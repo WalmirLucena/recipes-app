@@ -57,7 +57,7 @@ export default function Categories() {
         type="button"
         name="All"
         key="All"
-        data-testid="all-category-filter"
+        data-testid="All-category-filter"
         onClick={ () => handleAll() }
       >
         All

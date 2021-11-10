@@ -8,7 +8,7 @@ export default async function fetchFood(radio, input) {
   try {
     const response = await fetch(currentURL);
     const json = await response.json();
-    const foods = await json.meals;
+    const foods = json.meals;
 
     return foods;
   } catch (err) {
