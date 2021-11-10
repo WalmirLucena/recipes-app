@@ -11,7 +11,7 @@ export default function FoodSearchResults() {
     <main>
       {
         filteredFood.map((recipe, i) => (
-          <Link to={ `/comidas/${recipe.idMeal}` } key={ i }>
+          <Link to={ `/comidas/${recipe.idMeal}` } key={ i } detail>
             <section data-testid={ `${i}-recipe-card` }>
               <img
                 src={ recipe.strMealThumb }

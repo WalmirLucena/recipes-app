@@ -11,7 +11,7 @@ export default function DrinkSearchResults() {
     <main>
       {
         filteredDrink.map((recipe, i) => (
-          <Link to={ `/bebidas/${recipe.idDrink}` } key={ i }>
+          <Link to={ `/bebidas/${recipe.idDrink}` } key={ i } detail>
             <section data-testid={ `${i}-recipe-card` }>
               <img
                 src={ recipe.strDrinkThumb }
