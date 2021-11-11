@@ -12,6 +12,7 @@ export default function FoodProvider({ children }) {
 
   const fetchCategoryFood = async () => {
     const MAX_RECIPES = 5;
+
     const category = await fetchCategoryFoodApi();
     const filteredCategory = await category ? category.meals.slice(0, MAX_RECIPES) : [];
     setCategoryFood(filteredCategory);
