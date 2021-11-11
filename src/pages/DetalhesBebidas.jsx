@@ -1,44 +1,48 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import DrinkContext from '../contexts/DrinkContext';
-import FoodContext from '../contexts/FoodContext';
 import fetchIDAPI from '../helper/fetchIDAPI';
 import fetch25Random from '../helper/fetch25Random';
-import CarouselComp from '../components/CarouselComponents/CarouselComp';
 
-export default function Detalhes() {
-  const { setLoadingFood } = useContext(FoodContext);
+export default function DetalhesBebidas(props) {
   const { setLoadingDrink } = useContext(DrinkContext);
   const { pathname } = useLocation();
-  const [recipe, setRecipe] = useState({});
-  const [random6, setRandom6] = useState(null);
+  const [recipe, setRecipe] = useState(null);
+  const [random6, setRandom6] = useState([]);
   const [filterId, setFilterId] = useState('');
 
   // const filterId = pathname.match(/\d+((.|,)\d+)?/)[0];
 
-  const updateId = async () => {
+  const udatePathname = () => {
+    const { match:{ params } } = props;
+    console.log(params);
     setFilterId(pathname.match(/\d+((.|,)\d+)?/)[0]);
   };
 
   const fetchAPIId = async () => {
-    if (pathname.includes('/comidas')) {
-      setLoadingFood(true);
-      const resonse = await fetchIDAPI('food', filterId);
-      setRecipe(resonse);
-      setLoadingFood(false);
-    }
-
-    if (pathname.includes('/bebidas')) {
-      setLoadingDrink(true);
-      const resonse = await fetchIDAPI('drink', filterId);
-      setRecipe(resonse);
-      setLoadingDrink(false);
-    }
+    const { match:{ params } } = props;
+    setLoadingDrink(true);
+    const resonse = await fetchIDAPI('drink', params.idBebida);
+    setRecipe(resonse);
+    setLoadingDrink(false);
+    // setLoading(false);
   };
 
   const fetch6 = async () => {
-    const resp = await fetch25Random(pathname.includes('/bebidas') ? 'food' : 'drink');
-    setRandom6(resp);
+    const resp = await fetch25Random('food');
+    // console.log(resp);
+    const limit = 6;
+    let resp6 = [];
+    if (resp) {
+      for (let i = 0; i < limit; i += 1) {
+        const unidade = resp[i];
+        resp6 = [
+          ...resp6,
+          unidade,
+        ];
+      }
+    }
+    setRandom6(resp6);
   };
 
   const ingredient = recipe && Object.entries(recipe).filter((e) => {
@@ -78,36 +82,37 @@ export default function Detalhes() {
     return obj;
   };
 
+  // useEffect(() => {
+  //   udatePathname();
+  // }, []);
+
   useEffect(() => {
-    updateId();
+    fetchAPIId();
+    fetch6();
+    // if (filterId !== '') {
+    //   fetchAPIId();
+    //   fetch6();
+    // }
   }, []);
 
-  useEffect(() => {
-    if (filterId !== '') {
-      fetchAPIId();
-      fetch6();
-    }
-  }, [filterId]);
-
-  // measure.map((e) => console.log(e[1]));
-
   // console.log(random6);
-  if (!recipe || !random6) return <span>Loading</span>;
+
+  if (!recipe) return <span>Loading</span>;
   return (
     <div>
       <img
         height="300px"
-        src={ pathname.includes('/comidas') ? recipe.strMealThumb : recipe.strDrinkThumb }
-        alt={ pathname.includes('/comidas') ? recipe.strMeal : recipe.strDrink }
+        src={ recipe.strDrinkThumb }
+        alt={ recipe.strDrink }
         data-testid="recipe-photo"
       />
       <h1
         data-testid="recipe-title"
       >
-        { pathname.includes('/comidas') ? recipe.strMeal : recipe.strDrink }
+        { recipe.strDrink }
       </h1>
       <h4 data-testid="recipe-category">
-        { pathname.includes('/comidas') ? recipe.strCategory : recipe.strAlcoholic }
+        { recipe.strAlcoholic }
       </h4>
       <button
         type="button"
@@ -129,7 +134,7 @@ export default function Detalhes() {
       </div>
       <ul>
         {
-          ingredientMeasute().map((e, i) => (
+          recipe && ingredientMeasute().map((e, i) => (
             <li
               key={ i }
               data-testid={ `${i}-ingredient-name-and-measure` }
@@ -145,37 +150,29 @@ export default function Detalhes() {
         }
       </ul>
       <br />
-      <CarouselComp random6={ random6 } />
       <div>
-        {/* {
-          random6 && random6.map((e, i) => (
+        {
+          random6.map((e, i) => (
             <div
-              key={ pathname.includes('/bebidas') ? e.strMeal : e.strDrink }
+              key={ e.strMeal }
               data-testid={ `${i}-recomendation-card` }
             >
               <img
                 height="110px"
-                src={ pathname.includes('/bebidas') ? e.strMealThumb : e.strDrinkThumb }
-                alt={ pathname.includes('/bebidas') ? e.strMeal : e.strDrink }
+                src={ e.strMealThumb }
+                alt={ e.strMeal }
               />
               <h4
                 data-testid={ `${i}-recomendation-title` }
               >
-                { pathname.includes('/bebidas') ? e.strMeal : e.strDrink }
+                { e.strMeal }
               </h4>
             </div>
           ))
-        } */}
+        }
       </div>
       <br />
       <p data-testid="instructions">{ recipe.strInstructions }</p>
-      {pathname.includes('/comidas') && <iframe
-        data-testid="video"
-        width="300"
-        height="200"
-        src={ recipe.strYoutube }
-        title={ pathname.includes('/comidas') ? recipe.strMeal : recipe.strDrink }
-      />}
       <button type="button" data-testid="start-recipe-btn">
         Iniciar receita
       </button>

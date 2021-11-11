@@ -9,15 +9,31 @@ export default async function fetch25Random(type) {
       const response = await fetch(currentURL);
       const json = await response.json();
       const meals = await json.meals;
-      // console.log(type);
-      return meals;
+      const limit = 6;
+      let resp6 = [];
+      for (let i = 0; i < limit; i += 1) {
+        const unidade = meals[i];
+        resp6 = [
+          ...resp6,
+          unidade,
+        ];
+      }
+      return resp6;
     }
     if (type === 'drink') {
       const response = await fetch(currentURL);
       const json = await response.json();
       const drinks = await json.drinks;
-      // console.log(type);
-      return drinks;
+      const limit = 6;
+      let resp6 = [];
+      for (let i = 0; i < limit; i += 1) {
+        const unidade = drinks[i];
+        resp6 = [
+          ...resp6,
+          unidade,
+        ];
+      }
+      return resp6;
     }
   } catch (err) {
     console.error(err);

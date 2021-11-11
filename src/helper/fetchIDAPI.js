@@ -1,6 +1,9 @@
 export default async function fetchIDAPI(type, id) {
   let currentURL = '';
 
+  // console.log(type);
+  // console.log(id);
+
   if (type === 'food') { currentURL = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`; }
   if (type === 'drink') { currentURL = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`; }
 
