@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import CardsRec from './CardsRec';
 
@@ -14,3 +15,7 @@ export default function CarouselComp({ random6 }) {
     </>
   );
 }
+
+CarouselComp.propTypes = {
+  random6: PropTypes.arrayOf(PropTypes.any).isRequired,
+};

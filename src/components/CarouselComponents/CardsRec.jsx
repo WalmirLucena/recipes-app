@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
-export default function CardsRec({ e1 , i, vis }) {
+export default function CardsRec({ e1, i, vis }) {
   const { pathname } = useLocation();
   return (
     <div
@@ -22,3 +23,14 @@ export default function CardsRec({ e1 , i, vis }) {
     </div>
   );
 }
+
+CardsRec.propTypes = {
+  e1: PropTypes.shape({
+    strDrink: PropTypes.string,
+    strDrinkThumb: PropTypes.string,
+    strMeal: PropTypes.string,
+    strMealThumb: PropTypes.string,
+  }).isRequired,
+  i: PropTypes.number.isRequired,
+  vis: PropTypes.bool.isRequired,
+};
