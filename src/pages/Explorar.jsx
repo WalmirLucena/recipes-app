@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 export default function Explorar() {
@@ -23,6 +24,7 @@ export default function Explorar() {
       >
         Explorar Bebidas
       </Button>
+      <Footer />
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import fetchRandom from '../helper/fetchRandom';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 export default function ExpBebidas() {
@@ -31,6 +32,7 @@ export default function ExpBebidas() {
       >
         Me Surpreenda!
       </Button>
+      <Footer />
     </div>
   );
 }

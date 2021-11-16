@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import FoodContext from '../contexts/FoodContext';
+import Footer from '../components/Footer';
 
 export default function ExpIngComidas() {
   const {
@@ -19,7 +20,6 @@ export default function ExpIngComidas() {
   return (
     <div>
       <Header title="Explorar Ingredientes" profile />
-
       {
         loadingIngredients
           ? <span>Loading...</span>
@@ -42,6 +42,7 @@ export default function ExpIngComidas() {
             })
           )
       }
+      <Footer />
     </div>
   );
 }
