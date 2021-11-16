@@ -1,23 +1,23 @@
-export default async function fetchIDAPI(type, id) {
+export default async function fetchRandom(type) {
   let currentURL = '';
 
-  // console.log(type);
-  // console.log(id);
-
-  if (type === 'food') { currentURL = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`; }
-  if (type === 'drink') { currentURL = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`; }
+  if (type === 'food') { currentURL = 'https://www.themealdb.com/api/json/v1/1/random.php'; }
+  if (type === 'drink') { currentURL = 'https://www.thecocktaildb.com/api/json/v1/1/random.php'; }
 
   try {
     if (type === 'food') {
       const response = await fetch(currentURL);
       const json = await response.json();
-      const meals = await json.meals[0];
-      return meals;
+      const foods = await json.meals[0];
+
+      return foods;
     }
+
     if (type === 'drink') {
       const response = await fetch(currentURL);
       const json = await response.json();
       const drinks = await json.drinks[0];
+
       return drinks;
     }
   } catch (err) {

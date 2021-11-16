@@ -8,6 +8,7 @@ export default function SearchBar() {
   const [searchType, setSearchType] = useState('');
   const { fetchFood } = useContext(FoodContext);
   const { fetchDrink, setLoadingDrink } = useContext(DrinkContext);
+
   const { pathname } = useLocation();
   const history = useHistory();
 

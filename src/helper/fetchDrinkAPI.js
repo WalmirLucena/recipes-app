@@ -8,9 +8,9 @@ export default async function fetchDrink(radio, input) {
   try {
     const response = await fetch(currentURL);
     const json = await response.json();
-    const drinks = await json.drinks;
+    const drink = json.drinks;
 
-    return drinks;
+    return drink;
   } catch (err) {
     console.error(err);
   }
