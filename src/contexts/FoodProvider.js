@@ -9,6 +9,7 @@ import fetchFoodByCategory from '../helper/fetchFoodByCategory';
 
 export default function FoodProvider({ children }) {
   const [loadingFood, setLoadingFood] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [area, setArea] = useState([]);
   const [filteredFood, setFilteredFood] = useState([]);
   const [foodIngredients, setFoodIngredients] = useState([]);
@@ -85,6 +86,8 @@ export default function FoodProvider({ children }) {
   };
 
   const foodContextValues = {
+    loading,
+    setLoading,
     loadingFood,
     filteredFood,
     fetchFood,

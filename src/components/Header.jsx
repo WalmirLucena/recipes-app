@@ -16,9 +16,6 @@ export default function Header({ profile, title, search }) {
             <div src={ profileIcon }>
               <img src={ profileIcon } alt="Perfil" data-testid="profile-top-btn" />
             </div>
-            <div>
-              <img src={ profileIcon } data-testid="profile-top-btn" alt="Perfil" />
-            </div>
           </Link>
         )
         : null }
@@ -33,9 +30,6 @@ export default function Header({ profile, title, search }) {
           >
             <div src={ searchIcon }>
               <img src={ searchIcon } alt="Buscar" data-testid="search-top-btn" />
-            </div>
-            <div>
-              <img src={ searchIcon } data-testid="search-top-btn" alt="Buscar" />
             </div>
           </button>
         )

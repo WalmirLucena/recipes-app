@@ -9,7 +9,7 @@ import fetchDrinkByCategory from '../helper/fetchDrinkByCategory';
 export default function DrinkProvider({ children }) {
   const [loadingDrink, setLoadingDrink] = useState(false);
   const [filteredDrink, setFilteredDrink] = useState([]);
-
+  const [loading, setLoading] = useState(false);
   const [drinkIngredients, setDrinkIngredients] = useState([]);
   const [loadingIngredients, setLoadingIngredients] = useState(false);
 
@@ -44,6 +44,7 @@ export default function DrinkProvider({ children }) {
 
     setFilteredDrink(filteredSlice);
     setLoadingDrink(false);
+    setLoading(false);
 
     return filtered;
   };
@@ -72,6 +73,8 @@ export default function DrinkProvider({ children }) {
   };
 
   const drinkContextValue = {
+    loading,
+    setLoading,
     loadingDrink,
     setLoadingDrink,
     filteredDrink,
