@@ -4,7 +4,6 @@ import Header from '../components/Header';
 import FoodContext from '../contexts/FoodContext';
 import Footer from '../components/Footer';
 
-
 export default function ExpAreaComidas() {
   const [recipesByArea, setRecipesByArea] = useState([]);
   const [selectedArea, setSelectedArea] = useState('All');
