@@ -48,8 +48,6 @@ export default function DrinkProvider({ children }) {
     return filtered;
   };
 
-  const drinkContextValue = { loadingDrink, setLoadingDrink, filteredDrink, fetchDrink };
-
   const fetchInitialDrink = async () => {
     const MAX_RECIPES = 12;
     const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
@@ -74,8 +72,8 @@ export default function DrinkProvider({ children }) {
   };
 
   const drinkContextValue = {
-    loading,
-    setLoading,
+    loadingDrink,
+    setLoadingDrink,
     filteredDrink,
     fetchDrink,
     loadingIngredients,

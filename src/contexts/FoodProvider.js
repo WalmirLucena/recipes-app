@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import FoodContext from './FoodContext';
 import fetchArea from '../helper/fetchArea';
 import fetchFoodAPI from '../helper/fetchFoodAPI';
-
 import fetchIngredients from '../helper/fetchIngredients';
 import fetchCategoryFoodApi from '../helper/fetchCategoryFoodAPI';
 import fetchFoodByCategory from '../helper/fetchFoodByCategory';
@@ -62,8 +61,6 @@ export default function FoodProvider({ children }) {
     return filtered;
   };
 
-  const foodContextValues = { loadingFood, setLoadingFood, filteredFood, fetchFood };
-
   const fetchInitialFood = async () => {
     const MAX_RECIPES = 12;
     const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
@@ -88,11 +85,11 @@ export default function FoodProvider({ children }) {
   };
 
   const foodContextValues = {
-    loading,
-    setLoading,
+    loadingFood,
     filteredFood,
     fetchFood,
     loadingIngredients,
+    setLoadingFood,
     setLoadingIngredients,
     fetchIngredientsAPI,
     fetchByArea,
