@@ -2,6 +2,8 @@ import React, { useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import FoodContext from '../contexts/FoodContext';
+import Footer from '../components/Footer';
+
 
 export default function ExpAreaComidas() {
   const [recipesByArea, setRecipesByArea] = useState([]);
@@ -49,7 +51,6 @@ export default function ExpAreaComidas() {
   return (
     <>
       <Header title="Explorar Origem" profile search />
-
       {
         loading
           ? <span>Loading...</span>
@@ -93,7 +94,7 @@ export default function ExpAreaComidas() {
           </Link>
         ))
       }
-
+      <Footer />
     </>
   );
 }

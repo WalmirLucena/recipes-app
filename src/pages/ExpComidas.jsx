@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import fetchRandom from '../helper/fetchRandom';
 
@@ -42,6 +43,7 @@ export default function ExpComidas() {
       >
         Me Surpreenda!
       </Button>
+      <Footer />
     </div>
   );
 }
