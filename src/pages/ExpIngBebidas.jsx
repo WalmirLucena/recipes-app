@@ -20,7 +20,6 @@ export default function ExpIngBebidas() {
   return (
     <div>
       <Header title="Explorar Ingredientes" profile />
-
       {
         loadingIngredients
           ? <span>Loading...</span>

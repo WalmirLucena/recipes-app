@@ -13,8 +13,8 @@ export default function Header({ profile, title, search }) {
       { profile
         ? (
           <Link to="/perfil">
-            <div>
-              <img src={ profileIcon } data-testid="profile-top-btn" alt="Perfil" />
+            <div src={ profileIcon }>
+              <img src={ profileIcon } alt="Perfil" data-testid="profile-top-btn" />
             </div>
           </Link>
         )
@@ -28,8 +28,8 @@ export default function Header({ profile, title, search }) {
             type="button"
             onClick={ () => setSearchBar(!searchBar) }
           >
-            <div>
-              <img src={ searchIcon } data-testid="search-top-btn" alt="Buscar" />
+            <div src={ searchIcon }>
+              <img src={ searchIcon } alt="Buscar" data-testid="search-top-btn" />
             </div>
           </button>
         )

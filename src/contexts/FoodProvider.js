@@ -3,14 +3,14 @@ import React, { useState, useEffect } from 'react';
 import FoodContext from './FoodContext';
 import fetchArea from '../helper/fetchArea';
 import fetchFoodAPI from '../helper/fetchFoodAPI';
-
 import fetchIngredients from '../helper/fetchIngredients';
 import fetchCategoryFoodApi from '../helper/fetchCategoryFoodAPI';
 import fetchFoodByCategory from '../helper/fetchFoodByCategory';
 
 export default function FoodProvider({ children }) {
-  const [area, setArea] = useState([]);
+  const [loadingFood, setLoadingFood] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [area, setArea] = useState([]);
   const [filteredFood, setFilteredFood] = useState([]);
   const [foodIngredients, setFoodIngredients] = useState([]);
   const [loadingIngredients, setLoadingIngredients] = useState(false);
@@ -57,7 +57,7 @@ export default function FoodProvider({ children }) {
     const filteredSlice = await filtered ? filtered.slice(0, MAX_RECIPES) : [];
 
     setFilteredFood(filteredSlice);
-    setLoading(false);
+    setLoadingFood(false);
 
     return filtered;
   };
@@ -88,9 +88,11 @@ export default function FoodProvider({ children }) {
   const foodContextValues = {
     loading,
     setLoading,
+    loadingFood,
     filteredFood,
     fetchFood,
     loadingIngredients,
+    setLoadingFood,
     setLoadingIngredients,
     fetchIngredientsAPI,
     fetchByArea,

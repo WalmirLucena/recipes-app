@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom';
 import DrinkContext from '../contexts/DrinkContext';
 
 export default function DrinkSearchResults() {
-  const { loading, filteredDrink } = useContext(DrinkContext);
+  const { loadingDrink, filteredDrink } = useContext(DrinkContext);
 
-  if (loading) return <span>Loading...</span>;
+  if (loadingDrink) return <span>Loading...</span>;
 
   return (
     <main>
       {
         filteredDrink.map((recipe, i) => (
-          <Link to={ `/bebidas/${recipe.idDrink}` } key={ i }>
+          <Link to={ `/bebidas/${recipe.idDrink}` } key={ i } detail>
             <section data-testid={ `${i}-recipe-card` }>
               <img
                 src={ recipe.strDrinkThumb }

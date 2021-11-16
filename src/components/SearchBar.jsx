@@ -7,11 +7,10 @@ export default function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
   const [searchType, setSearchType] = useState('');
   const { fetchFood } = useContext(FoodContext);
-  const { fetchDrink, setLoading, categoryDrink } = useContext(DrinkContext);
+  const { fetchDrink, setLoadingDrink } = useContext(DrinkContext);
+
   const { pathname } = useLocation();
   const history = useHistory();
-
-  console.log(categoryDrink);
 
   const handleSearch = async () => {
     const LETTER_ERROR = 'Sua busca deve conter somente 1 (um) caracter';
@@ -20,7 +19,7 @@ export default function SearchBar() {
     if (searchType === 'letra' && searchInput.length !== 1) global.alert(LETTER_ERROR);
 
     if (pathname.includes('/comidas')) {
-      setLoading(true);
+      setLoadingDrink(true);
 
       const recipes = await fetchFood(searchType, searchInput);
       if (!recipes) {
@@ -29,7 +28,7 @@ export default function SearchBar() {
     }
 
     if (pathname.includes('/bebidas')) {
-      setLoading(true);
+      setLoadingDrink(true);
 
       const recipes = await fetchDrink(searchType, searchInput);
       if (!recipes) {
