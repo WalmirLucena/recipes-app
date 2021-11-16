@@ -37,7 +37,6 @@ export default function DrinkProvider({ children }) {
     fetchCategoryDrink();
   }, []);
 
-
   const fetchDrink = async (radio, input) => {
     const MAX_RECIPES = 12;
     const filtered = await fetchDrinkAPI(radio, input);
@@ -76,7 +75,7 @@ export default function DrinkProvider({ children }) {
     loading,
     setLoading,
     filteredDrink,
-    fetchDrink,s
+    fetchDrink,
     loadingIngredients,
     setLoadingIngredients,
     fetchIngredientsAPI,

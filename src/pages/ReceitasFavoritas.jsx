@@ -12,11 +12,14 @@ export default function ReceitasFavoritas() {
   const [filtered, setFiltered] = useState([]);
 
   useEffect(() => {
-    const localFavorites = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const getLocalStorage = async () => {
+      const localFavorites = await JSON.parse(localStorage.getItem('favoriteRecipes'));
+      setFiltered(localFavorites);
 
-    setFiltered(localFavorites);
-    setFavorite(localFavorites);
-    setLoading(false);
+      setFavorite(localFavorites);
+      setLoading(false);
+    };
+    getLocalStorage();
   }, []);
 
   const removeFavorite = (event) => {
