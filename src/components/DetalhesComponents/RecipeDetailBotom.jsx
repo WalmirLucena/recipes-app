@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import ButtonIniciar from './ButtonIniciar';
 
 export default function RecipeDetailBotom({ recipe }) {
   const { pathname } = useLocation();
@@ -20,14 +21,7 @@ export default function RecipeDetailBotom({ recipe }) {
         src={ recipe.strYoutube }
         title={ pathname.includes('/comidas') ? recipe.strMeal : recipe.strDrink }
       />}
-      <button
-        type="button"
-        data-testid="start-recipe-btn"
-        style={ { position: 'fixed', bottom: 0 } }
-        // onClick={ verifyInfo }
-      >
-        Iniciar receita
-      </button>
+      <ButtonIniciar />
     </div>
   );
 }

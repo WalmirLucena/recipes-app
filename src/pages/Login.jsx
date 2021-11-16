@@ -8,6 +8,10 @@ export default function Login() {
   const history = useHistory();
 
   const handleLogin = () => {
+    const inProgressRecipes = { meals: {}, cocktails: {} };
+    localStorage.setItem('doneRecipes', JSON.stringify([]));
+    localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
+
     localStorage.setItem('mealsToken', 1);
     localStorage.setItem('cocktailsToken', 1);
 
