@@ -1,13 +1,42 @@
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import FoodContext from './FoodContext';
+import fetchArea from '../helper/fetchArea';
 import fetchFoodAPI from '../helper/fetchFoodAPI';
+
+import fetchIngredients from '../helper/fetchIngredients';
 import fetchCategoryFoodApi from '../helper/fetchCategoryFoodAPI';
 import fetchFoodByCategory from '../helper/fetchFoodByCategory';
 
 export default function FoodProvider({ children }) {
+  const [area, setArea] = useState([]);
   const [loading, setLoading] = useState(false);
   const [filteredFood, setFilteredFood] = useState([]);
+  const [foodIngredients, setFoodIngredients] = useState([]);
+  const [loadingIngredients, setLoadingIngredients] = useState(false);
+
+  const fetchByArea = async () => {
+    const MAX_AREA = 99;
+    const response = await fetchArea();
+    const areaSlice = await response.slice(0, MAX_AREA);
+
+    setArea(areaSlice);
+    setLoading(false);
+
+    return areaSlice;
+  };
+
+  const fetchIngredientsAPI = async () => {
+    const MAX_INGREDIENTS = 12;
+    const response = await fetchIngredients('food');
+    const ingredientsSlice = await response.slice(0, MAX_INGREDIENTS);
+
+    setFoodIngredients(ingredientsSlice);
+    setLoadingIngredients(false);
+
+    return ingredientsSlice;
+  };
+
   const [categoryFood, setCategoryFood] = useState([]);
 
   const fetchCategoryFood = async () => {
@@ -61,6 +90,12 @@ export default function FoodProvider({ children }) {
     setLoading,
     filteredFood,
     fetchFood,
+    loadingIngredients,
+    setLoadingIngredients,
+    fetchIngredientsAPI,
+    fetchByArea,
+    area,
+    foodIngredients,
     categoryFood,
     fetchByCategoryFood,
     fetchInitialFood };
