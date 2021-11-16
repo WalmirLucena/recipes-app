@@ -4,6 +4,12 @@ import { useLocation } from 'react-router-dom';
 
 export default function RecipeDetailBotom({ recipe }) {
   const { pathname } = useLocation();
+
+  // const verifyInfo = () => {
+  //   if () return false;
+
+  //   return true;
+  // };
   return (
     <div>
       <p data-testid="instructions">{ recipe.strInstructions }</p>
@@ -14,7 +20,12 @@ export default function RecipeDetailBotom({ recipe }) {
         src={ recipe.strYoutube }
         title={ pathname.includes('/comidas') ? recipe.strMeal : recipe.strDrink }
       />}
-      <button type="button" data-testid="start-recipe-btn">
+      <button
+        type="button"
+        data-testid="start-recipe-btn"
+        style={ { position: 'fixed', bottom: 0 } }
+        // onClick={ verifyInfo }
+      >
         Iniciar receita
       </button>
     </div>

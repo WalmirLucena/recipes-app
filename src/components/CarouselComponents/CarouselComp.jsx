@@ -3,7 +3,7 @@ import React from 'react';
 import CardsRec from './CardsRec';
 
 export default function CarouselComp({ random6 }) {
-  console.log(random6[0]);
+  // console.log(random6[0]);
   return (
     <>
       <CardsRec e1={ random6[0] } i={ 0 } vis />

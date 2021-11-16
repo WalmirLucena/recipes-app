@@ -11,8 +11,10 @@ export default function Detalhes() {
   const [recipe, setRecipe] = useState({});
   const [random6, setRandom6] = useState(null);
   const [filterId, setFilterId] = useState('');
+  const [btnIniciar, setBtnIniciar] = useState(true);
 
   // const filterId = pathname.match(/\d+((.|,)\d+)?/)[0];
+  const teste = { btnIniciar, setBtnIniciar };
 
   const updateId = async () => {
     setFilterId(pathname.match(/\d+((.|,)\d+)?/)[0]);
@@ -53,7 +55,7 @@ export default function Detalhes() {
       <br />
       <CarouselComp random6={ random6 } />
       <br />
-      <RecipeDetailBotom recipe={ recipe } />
+      <RecipeDetailBotom recipe={ recipe } teste={ teste } />
     </div>
   );
 }

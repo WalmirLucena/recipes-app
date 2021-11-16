@@ -2,10 +2,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import funcFilterObjDetails from '../../helper/funcFilterObjDetails';
+import ButtonsFavComp from './ButtonsFavComp';
 
 export default function RecipeDetailTop({ recipe }) {
   const { pathname } = useLocation();
   const ingredientMeasute = funcFilterObjDetails(recipe);
+
   return (
     <div>
       <img
@@ -22,18 +24,7 @@ export default function RecipeDetailTop({ recipe }) {
       <h4 data-testid="recipe-category">
         { pathname.includes('/comidas') ? recipe.strCategory : recipe.strAlcoholic }
       </h4>
-      <button
-        type="button"
-        data-testid="share-btn"
-      >
-        Compartilhar
-      </button>
-      <button
-        type="button"
-        data-testid="favorite-btn"
-      >
-        Favoritar
-      </button>
+      <ButtonsFavComp recipe={ recipe } />
       <div>
         Categorias
         <h3 data-testid="recipe-category">
