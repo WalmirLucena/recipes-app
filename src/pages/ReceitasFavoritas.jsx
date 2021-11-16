@@ -32,14 +32,11 @@ export default function ReceitasFavoritas() {
   const handleShare = (event) => {
     event.preventDefault();
 
-    const SECONDS = 5000;
     setCopy(true);
 
-    const URL = `http://www.localhost:3000${event.target.id}`;
+    const URL = `http://localhost:3000${event.target.id}`;
 
-    // console.log(URL);
     navigator.clipboard.writeText(URL);
-    setTimeout(() => setCopy(false), SECONDS);
   };
 
   const handleFilter = (event) => {
