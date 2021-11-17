@@ -4,6 +4,8 @@ import { useLocation } from 'react-router-dom';
 import ButtonFavComplexity from './ButtonFavComplexity';
 import shareIcon from '../../images/shareIcon.svg';
 
+// const clipboard = require('clipboard-copy');
+
 export default function ButtonsFavComp({ recipe }) {
   const { pathname } = useLocation();
   const [btnIniciar, setBtnIniciar] = useState(false);
@@ -20,8 +22,15 @@ export default function ButtonsFavComp({ recipe }) {
 
   // console.log(recipe);
 
+  const updateClipboard = (str) => {
+    window.navigator.clipboard.writeText(str)
+      .then(() => setBtnIniciar(true), () => console.log('Link não foi copiado!'));
+  };
+
   const shareClick = () => {
-    navigator.clipboard.writeText(window.location.href);
+    updateClipboard(window.location.href);
+    // clipboard(window.location.href);
+    // window.navigator.clipboard.writeText(window.location.href);
     setBtnIniciar(true);
   };
 

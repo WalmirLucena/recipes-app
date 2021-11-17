@@ -5,18 +5,24 @@ import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
 
 export default function ReceitasFeitas() {
-  const [loading, setLoading] = useState(true);
   const [copy, setCopy] = useState(false);
   const [favorite, setFavorite] = useState([]);
   const [filtered, setFiltered] = useState([]);
 
   useEffect(() => {
-    const localDoneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+    const getLocalStorage = async () => {
+      const localFavorites = await JSON.parse(localStorage.getItem('doneRecipes'));
 
-    setFiltered(localDoneRecipes);
-    setFavorite(localDoneRecipes);
-    setLoading(false);
+      setFiltered(localFavorites);
+      setFavorite(localFavorites);
+    };
+    getLocalStorage();
   }, []);
+
+  const updateClipboard = (str) => {
+    window.navigator.clipboard.writeText(str)
+      .then(() => setCopy(true), () => console.log('Link não foi copiado!'));
+  };
 
   const handleShare = (event) => {
     event.preventDefault();
@@ -25,7 +31,7 @@ export default function ReceitasFeitas() {
 
     const URL = `http://localhost:3000${event.target.id}`;
 
-    navigator.clipboard.writeText(URL);
+    updateClipboard(URL);
   };
 
   const handleFilter = (event) => {
@@ -33,28 +39,19 @@ export default function ReceitasFeitas() {
     event.preventDefault();
 
     if (name === 'all') {
-      setLoading(true);
-
       setFiltered(favorite);
-      setLoading(false);
     }
 
     if (name === 'food') {
-      setLoading(true);
-
       const filteredFoods = favorite.filter((recipe) => recipe.type === 'comida');
 
       setFiltered(filteredFoods);
-      setLoading(false);
     }
 
     if (name === 'drink') {
-      setLoading(true);
-
       const filteredDrinks = favorite.filter((recipe) => recipe.type === 'bebida');
 
       setFiltered(filteredDrinks);
-      setLoading(false);
     }
   };
 
@@ -89,7 +86,7 @@ export default function ReceitasFeitas() {
         { copy && <span>Link copiado!</span> }
       </section>
       <section>
-        { loading
+        { !filtered
           ? <span>Loading...</span>
           : (
             filtered.map((recipe, i) => (
