@@ -6,7 +6,6 @@ import shareIcon from '../images/shareIcon.svg';
 import unfavoriteIcon from '../images/blackHeartIcon.svg';
 
 export default function ReceitasFavoritas() {
-  const [loading, setLoading] = useState(true);
   const [copy, setCopy] = useState(false);
   const [favorite, setFavorite] = useState([]);
   const [filtered, setFiltered] = useState([]);
@@ -14,10 +13,9 @@ export default function ReceitasFavoritas() {
   useEffect(() => {
     const getLocalStorage = async () => {
       const localFavorites = await JSON.parse(localStorage.getItem('favoriteRecipes'));
-      setFiltered(localFavorites);
 
       setFavorite(localFavorites);
-      setLoading(false);
+      setFiltered(localFavorites);
     };
     getLocalStorage();
   }, []);
@@ -32,6 +30,11 @@ export default function ReceitasFavoritas() {
     setFiltered(removeItemFilter);
   };
 
+  const updateClipboard = (str) => {
+    window.navigator.clipboard.writeText(str)
+      .then(() => setCopy(true), () => console.log('Link não foi copiado!'));
+  };
+
   const handleShare = (event) => {
     event.preventDefault();
 
@@ -39,7 +42,7 @@ export default function ReceitasFavoritas() {
 
     const URL = `http://localhost:3000${event.target.id}`;
 
-    navigator.clipboard.writeText(URL);
+    updateClipboard(URL);
   };
 
   const handleFilter = (event) => {
@@ -47,28 +50,19 @@ export default function ReceitasFavoritas() {
     event.preventDefault();
 
     if (name === 'all') {
-      setLoading(true);
-
       setFiltered(favorite);
-      setLoading(false);
     }
 
     if (name === 'food') {
-      setLoading(true);
-
       const filteredFoods = favorite.filter((recipe) => recipe.type === 'comida');
 
       setFiltered(filteredFoods);
-      setLoading(false);
     }
 
     if (name === 'drink') {
-      setLoading(true);
-
       const filteredDrinks = favorite.filter((recipe) => recipe.type === 'bebida');
 
       setFiltered(filteredDrinks);
-      setLoading(false);
     }
   };
 
@@ -103,7 +97,7 @@ export default function ReceitasFavoritas() {
         { copy && <span>Link copiado!</span> }
       </section>
       <section>
-        { loading
+        { !filtered
           ? <span>Loading...</span>
           : (
             filtered.map((recipe, i) => (
@@ -137,7 +131,6 @@ export default function ReceitasFavoritas() {
                   />
                 </button>
               </article>
-
             )))}
       </section>
     </div>
