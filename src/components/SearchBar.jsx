@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import DrinkContext from '../contexts/DrinkContext';
 import FoodContext from '../contexts/FoodContext';
+import '../styles/SearchBar.css';
 
 export default function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
@@ -38,52 +39,62 @@ export default function SearchBar() {
   };
 
   return (
-    <form>
-      <label htmlFor="search-bar">
-        <input
-          id="search-bar"
-          type="text"
-          placeholder="Buscar Receita"
-          value={ searchInput }
-          onChange={ (e) => setSearchInput(e.target.value) }
-          data-testid="search-input"
-        />
-      </label>
-      <label htmlFor="ingrediente">
-        <input
-          id="ingrediente"
-          type="radio"
-          name="type"
-          value="ingrediente"
-          onChange={ (e) => setSearchType(e.target.value) }
-          data-testid="ingredient-search-radio"
-        />
-        Ingrediente
-      </label>
-      <label htmlFor="nome">
-        <input
-          id="nome"
-          type="radio"
-          name="type"
-          value="nome"
-          onChange={ (e) => setSearchType(e.target.value) }
-          data-testid="name-search-radio"
-        />
-        Nome
-      </label>
-      <label htmlFor="primeira-letra">
-        <input
-          id="primeira-letra"
-          type="radio"
-          name="type"
-          value="letra"
-          onChange={ (e) => setSearchType(e.target.value) }
-          data-testid="first-letter-search-radio"
-        />
-        Primeira letra
-      </label>
+    <form className="searchbar-form">
+      <div className="text-input">
+        <label htmlFor="search-bar">
+          <input
+            id="search-bar"
+            type="text"
+            className="search-input"
+            placeholder="Buscar Receita"
+            value={ searchInput }
+            onChange={ (e) => setSearchInput(e.target.value) }
+            data-testid="search-input"
+          />
+        </label>
+      </div>
+      <div className="radio-container">
+        <label htmlFor="ingrediente" className="label-radio">
+          <input
+            id="ingrediente"
+            type="radio"
+            name="type"
+            value="ingrediente"
+            onChange={ (e) => setSearchType(e.target.value) }
+            data-testid="ingredient-search-radio"
+            className="input-radio"
+          />
+          Ingrediente
+        </label>
+        <label htmlFor="nome" className="label-radio">
+          <input
+            id="nome"
+            type="radio"
+            name="type"
+            value="nome"
+            onChange={ (e) => setSearchType(e.target.value) }
+            data-testid="name-search-radio"
+            className="input-radio"
+          />
+          Nome
+        </label>
+        <label htmlFor="primeira-letra" className="label-radio">
+          <input
+            id="primeira-letra"
+            type="radio"
+            name="type"
+            value="letra"
+            onChange={ (e) => setSearchType(e.target.value) }
+            data-testid="first-letter-search-radio"
+            className="input-radio"
+          />
+          Primeira letra
+        </label>
+
+      </div>
       <button
         type="button"
+        className="exec-search-btn"
         onClick={ handleSearch }
         data-testid="exec-search-btn"
       >

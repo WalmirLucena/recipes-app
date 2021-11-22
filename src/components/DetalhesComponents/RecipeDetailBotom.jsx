@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import ButtonIniciar from './ButtonIniciar';
+import '../../styles/RecipeBottom.css';
 
 export default function RecipeDetailBotom({ recipe }) {
   const { pathname } = useLocation();
@@ -12,8 +13,11 @@ export default function RecipeDetailBotom({ recipe }) {
   //   return true;
   // };
   return (
-    <div>
-      <p data-testid="instructions">{ recipe.strInstructions }</p>
+    <div className="bottom-container">
+      <h3>Instructions</h3>
+      <div className="instructions-container">
+        <p data-testid="instructions">{ recipe.strInstructions }</p>
+      </div>
       {pathname.includes('/comidas') && <iframe
         data-testid="video"
         width="300"
@@ -21,6 +25,7 @@ export default function RecipeDetailBotom({ recipe }) {
         src={ recipe.strYoutube }
         title={ pathname.includes('/comidas') ? recipe.strMeal : recipe.strDrink }
       />}
+
       <ButtonIniciar />
     </div>
   );

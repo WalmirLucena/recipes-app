@@ -3,51 +3,61 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import funcFilterObjDetails from '../../helper/funcFilterObjDetails';
 import ButtonsFavComp from './ButtonsFavComp';
+import '../../styles/RecipeDetailTop.css';
 
 export default function RecipeDetailTop({ recipe }) {
   const { pathname } = useLocation();
   const ingredientMeasute = funcFilterObjDetails(recipe);
 
   return (
-    <div>
+    <div className="top-container">
       <img
         height="300px"
-        src={ pathname.includes('/comidas') ? recipe.strMealThumb : recipe.strDrinkThumb }
+        src={ pathname.includes('/comidas')
+          ? recipe.strMealThumb : recipe.strDrinkThumb }
         alt={ pathname.includes('/comidas') ? recipe.strMeal : recipe.strDrink }
         data-testid="recipe-photo"
+        className="recipe-photo"
       />
-      <h1
-        data-testid="recipe-title"
-      >
-        { pathname.includes('/comidas') ? recipe.strMeal : recipe.strDrink }
-      </h1>
-      <h4 data-testid="recipe-category">
-        { pathname.includes('/comidas') ? recipe.strCategory : recipe.strAlcoholic }
-      </h4>
-      <ButtonsFavComp recipe={ recipe } />
+      <div className="top-content">
+        <div>
+          <h1
+            data-testid="recipe-title"
+          >
+            { pathname.includes('/comidas') ? recipe.strMeal : recipe.strDrink }
+          </h1>
+          <h4 data-testid="recipe-category">
+            { pathname.includes('/comidas') ? recipe.strCategory : recipe.strAlcoholic }
+          </h4>
+        </div>
+
+        <ButtonsFavComp recipe={ recipe } />
+
+      </div>
       <div>
-        Categorias
         <h3 data-testid="recipe-category">
           { recipe.strTags }
         </h3>
       </div>
-      <ul>
-        {
-          ingredientMeasute.map((e, i) => (
-            <li
-              key={ i }
-              data-testid={ `${i}-ingredient-name-and-measure` }
-            >
-              <div>
-                { Object.keys(e) }
-                { ' / ' }
-                { Object.values(e) }
-              </div>
+      <div className="ing-container">
+        <ul>
+          {
+            ingredientMeasute.map((e, i) => (
+              <li
+                key={ i }
+                data-testid={ `${i}-ingredient-name-and-measure` }
+              >
+                <div>
+                  { Object.keys(e) }
+                  { ' / ' }
+                  { Object.values(e) }
+                </div>
 
-            </li>
-          ))
-        }
-      </ul>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
     </div>
   );
 }

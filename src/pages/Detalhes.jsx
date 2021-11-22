@@ -48,7 +48,7 @@ export default function Detalhes() {
     }
   }, [filterId]);
 
-  if (!recipe || !random6) return <span>Loading</span>;
+  if (!recipe || !random6) return <span className="loading-detail">Loading ...</span>;
   return (
     <div>
       <RecipeDetailTop recipe={ recipe } />

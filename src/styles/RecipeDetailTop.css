@@ -1,0 +1,49 @@
+.top-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-container .recipe-photo {
+  height: 250px;
+  width: 100%;
+}
+
+.top-container h1, h3 {
+  margin-left: 0.75rem;
+}
+
+.top-container h3 {
+  font-size: 1.2rem;
+}
+
+.top-container h4 {
+  color: grey;
+  margin-left: 0.75rem;
+}
+
+.top-container ul {
+  font-size: large;
+}
+
+.ing-container {
+  align-items: center;
+  background-color: #d6ad4c8a;
+  display: flex;
+  margin: 0 0.75rem;
+}
+
+.loading {
+  align-items: center;
+  display: flex;
+  font-size: 3rem;
+  height: 50vh;
+  justify-content: center;
+}
+
+.loading-detail {
+  align-items: center;
+  display: flex;
+  font-size: 3rem;
+  height: 100vh;
+  justify-content: center;
+}

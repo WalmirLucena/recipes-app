@@ -1,0 +1,49 @@
+.button-container-fav {
+  display: flex;
+  margin-top: 0.3rem;
+  width: 100%;
+}
+
+.button-container-fav button {
+  background-color: gray;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: larger;
+  margin: 1rem;
+  padding: 0.7rem;
+  width: 90px;
+}
+
+.card-container-fav {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.card-content-fav {
+  border-radius: 10px;
+  box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  margin: 0.45rem 0.9rem;
+  width: 100%;
+}
+
+.card-container-fav span {
+  margin-left: 5px;
+}
+
+.card-container-fav button {
+  background-color: white;
+  border: none;
+  color: black;
+  margin: 50px 20px;
+}
+
+.card-content-fav img {
+  border-radius: 10px;
+}
+
+/* .img-container-fav {
+  width: 100%;
+} */

@@ -1,0 +1,16 @@
+.categorie-container {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  margin: 0.5rem 0;
+  width: 100%;
+}
+
+.categorie-button {
+  background-color: #caab63;
+  border: none;
+  border-radius: 5px;
+  font-size: 13px;
+  margin: 2.5px 5px;
+  width: 100px;
+}

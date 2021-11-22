@@ -1,9 +1,9 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import fetchRandom from '../helper/fetchRandom';
+import '../styles/Explorar.css';
 
 export default function ExpComidas() {
   const history = useHistory();
@@ -22,27 +22,31 @@ export default function ExpComidas() {
   return (
     <div>
       <Header title="Explorar Comidas" profile />
-      <Button
-        variant="secondary"
-        onClick={ () => history.push('/explorar/comidas/ingredientes') }
-        data-testid="explore-by-ingredient"
-      >
-        Por Ingredientes
-      </Button>
-      <Button
-        variant="secondary"
-        onClick={ verifyAuth }
-        data-testid="explore-by-area"
-      >
-        Por Local de Origem
-      </Button>
-      <Button
-        variant="secondary"
-        onClick={ surpriseMeFood }
-        data-testid="explore-surprise"
-      >
-        Me Surpreenda!
-      </Button>
+      <div className="button-container">
+        <div>
+          <button
+            type="button"
+            onClick={ () => history.push('/explorar/comidas/ingredientes') }
+            data-testid="explore-by-ingredient"
+          >
+            Por Ingredientes
+          </button>
+          <button
+            type="button"
+            onClick={ verifyAuth }
+            data-testid="explore-by-area"
+          >
+            Por Local de Origem
+          </button>
+          <button
+            type="button"
+            onClick={ surpriseMeFood }
+            data-testid="explore-surprise"
+          >
+            Me Surpreenda!
+          </button>
+        </div>
+      </div>
       <Footer />
     </div>
   );

@@ -1,0 +1,43 @@
+.searchbar-form {
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.searchbar-form .text-input {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.text-input label {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.3rem;
+  width: 100%;
+}
+
+.search-input {
+  width: 90%;
+}
+
+.radio-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.input-radio:checked {
+  color: #ba9540;
+}
+
+.label-radio .input-radio {
+  margin: 0 5px;
+  padding: 0 5px;
+}
+
+.exec-search-btn {
+  background-color: #ba9540;
+  border: none;
+  border-radius: 5px;
+  margin-left: 15px;
+}

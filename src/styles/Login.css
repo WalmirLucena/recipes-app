@@ -1,0 +1,33 @@
+.login-form {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.login-form label {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  margin: 0.5rem 1rem;
+}
+
+.login-input {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+
+.login-button {
+  background-color: #ba9540;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  width: 15rem;
+}

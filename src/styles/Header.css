@@ -1,0 +1,22 @@
+.header-container {
+  align-items: center;
+  background-color: #caab63;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.header-container .profile {
+  margin: 0.5rem;
+}
+
+.header-container span {
+  align-items: center;
+  font-size: larger;
+  margin-right: 0.5rem;
+}
+
+.search {
+  background-color: #caab63;
+  border: none;
+}

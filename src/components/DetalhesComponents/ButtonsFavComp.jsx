@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ButtonFavComplexity from './ButtonFavComplexity';
 import shareIcon from '../../images/shareIcon.svg';
+import '../../styles/ButtonFav.css';
 
 // const clipboard = require('clipboard-copy');
 
@@ -39,6 +40,7 @@ export default function ButtonsFavComp({ recipe }) {
       <button
         type="button"
         onClick={ shareClick }
+        className="share-button"
       >
         <img src={ shareIcon } alt="Compartilhar" data-testid="share-btn" />
       </button>

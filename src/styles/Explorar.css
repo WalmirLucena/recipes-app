@@ -1,0 +1,23 @@
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  width: 100%;
+
+}
+
+.button-container div {
+  display: flex;
+  flex-flow: column;
+  width: 80%;
+}
+
+.button-container button {
+  background-color: gray;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.5rem;
+  margin: 1rem;
+  padding: 1rem;
+}

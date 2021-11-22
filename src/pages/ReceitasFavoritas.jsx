@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
 import unfavoriteIcon from '../images/blackHeartIcon.svg';
+import '../styles/ReceitasFav.css';
 
 export default function ReceitasFavoritas() {
   const [copy, setCopy] = useState(false);
@@ -69,39 +69,39 @@ export default function ReceitasFavoritas() {
   return (
     <div>
       <Header title="Receitas Favoritas" profile />
-      <section>
-        <Button
+      <section className="button-container-fav">
+        <button
           name="all"
-          variant="secondary"
+          type="button"
           onClick={ handleFilter }
           data-testid="filter-by-all-btn"
         >
           All
-        </Button>
-        <Button
+        </button>
+        <button
           name="food"
-          variant="secondary"
+          type="button"
           onClick={ handleFilter }
           data-testid="filter-by-food-btn"
         >
           Food
-        </Button>
-        <Button
+        </button>
+        <button
           name="drink"
-          variant="secondary"
+          type="button"
           onClick={ handleFilter }
           data-testid="filter-by-drink-btn"
         >
           Drinks
-        </Button>
+        </button>
         { copy && <span>Link copiado!</span> }
       </section>
-      <section>
+      <section className="card-container-fav">
         { !filtered
           ? <span>Loading...</span>
           : (
             filtered.map((recipe, i) => (
-              <article key={ i }>
+              <article key={ i } className="card-content-fav">
                 <Link to={ `/${recipe.type}s/${recipe.id}` }>
                   <img
                     height="150px"
@@ -109,27 +109,32 @@ export default function ReceitasFavoritas() {
                     alt={ recipe.name }
                     data-testid={ `${i}-horizontal-image` }
                   />
+
+                </Link>
+                <div>
                   <span data-testid={ `${i}-horizontal-top-text` }>
                     { recipe.alcoholicOrNot || `${recipe.area} - ${recipe.category}` }
                   </span>
                   <span data-testid={ `${i}-horizontal-name` }>{ recipe.name }</span>
-                </Link>
-                <button type="button" onClick={ handleShare }>
-                  <img
-                    id={ `/${recipe.type}s/${recipe.id}` }
-                    src={ shareIcon }
-                    alt="Share"
-                    data-testid={ `${i}-horizontal-share-btn` }
-                  />
-                </button>
-                <button type="button" onClick={ removeFavorite }>
-                  <img
-                    id={ recipe.id }
-                    src={ unfavoriteIcon }
-                    alt="Remove Favorite"
-                    data-testid={ `${i}-horizontal-favorite-btn` }
-                  />
-                </button>
+
+                  <button type="button" onClick={ handleShare }>
+                    <img
+                      id={ `/${recipe.type}s/${recipe.id}` }
+                      src={ shareIcon }
+                      alt="Share"
+                      data-testid={ `${i}-horizontal-share-btn` }
+                    />
+                  </button>
+                  <button type="button" onClick={ removeFavorite }>
+                    <img
+                      id={ recipe.id }
+                      src={ unfavoriteIcon }
+                      alt="Remove Favorite"
+                      data-testid={ `${i}-horizontal-favorite-btn` }
+                    />
+                  </button>
+                </div>
+
               </article>
             )))}
       </section>

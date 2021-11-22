@@ -1,0 +1,26 @@
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 11%;
+  width: 100%;
+}
+
+.card-content {
+  border-radius: 10px;
+  box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-flow: column;
+  margin: 0.5rem 0;
+  width: 150px;
+}
+
+.card-content img {
+  border-radius: 10px;
+}
+
+.card-content span {
+  color: black;
+  margin-left: 0.3rem;
+  text-decoration: none;
+}

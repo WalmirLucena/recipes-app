@@ -1,0 +1,20 @@
+.caurosel-card {
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  margin: 0.5rem;
+}
+
+.caurosel-card img {
+  border-radius: 5px;
+  width: 150px;
+}
+
+.caurosel-container {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+}
+
+.caurosel-container h3 {
+  margin-right: 140px;
+}

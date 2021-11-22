@@ -58,6 +58,7 @@ export default function ButtonFavComplexity({ recipeReformed }) {
     <button
       type="button"
       onClick={ favoriteClick }
+      className="share-button"
     >
       {favIcon
         ? <img src={ blackHeartIcon } alt="blackIcon" data-testid="favorite-btn" />

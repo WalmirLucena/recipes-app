@@ -18,20 +18,24 @@ export default function ExpBebidas() {
   return (
     <div>
       <Header title="Explorar Bebidas" profile />
-      <Button
-        variant="secondary"
-        onClick={ () => history.push('/explorar/bebidas/ingredientes') }
-        data-testid="explore-by-ingredient"
-      >
-        Por Ingredientes
-      </Button>
-      <Button
-        variant="secondary"
-        onClick={ surpriseMeDrink }
-        data-testid="explore-surprise"
-      >
-        Me Surpreenda!
-      </Button>
+      <div className="button-container">
+        <div>
+          <Button
+            variant="secondary"
+            onClick={ () => history.push('/explorar/bebidas/ingredientes') }
+            data-testid="explore-by-ingredient"
+          >
+            Por Ingredientes
+          </Button>
+          <Button
+            variant="secondary"
+            onClick={ surpriseMeDrink }
+            data-testid="explore-surprise"
+          >
+            Me Surpreenda!
+          </Button>
+        </div>
+      </div>
       <Footer />
     </div>
   );

@@ -53,6 +53,7 @@ export default function IniciarBtn() {
       data-testid="start-recipe-btn"
       onClick={ handleClick }
       style={ iniciarBtnStyle }
+      className="iniciar-button"
     >
       { inProgress ? 'Continuar Receita' : 'Iniciar receita' }
     </button>

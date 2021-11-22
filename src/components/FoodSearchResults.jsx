@@ -1,18 +1,19 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import FoodContext from '../contexts/FoodContext';
+import '../styles/FoodSearchResults.css';
 
 export default function FoodSearchResults() {
   const { loadingFood, filteredFood } = useContext(FoodContext);
 
-  if (loadingFood) return <span>Loading...</span>;
+  if (loadingFood) return <span className="loading">Loading...</span>;
 
   return (
-    <main>
+    <main className="main-content">
       {
         filteredFood.map((recipe, i) => (
           <Link to={ `/comidas/${recipe.idMeal}` } key={ i } detail>
-            <section data-testid={ `${i}-recipe-card` }>
+            <section className="card-content" data-testid={ `${i}-recipe-card` }>
               <img
                 src={ recipe.strMealThumb }
                 height="100px"

@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import DrinkContext from '../contexts/DrinkContext';
 import FoodContext from '../contexts/FoodContext';
+import '../styles/Categories.css';
 
 export default function Categories() {
   const [buttonFilter, setButtonFilter] = useState();
@@ -42,7 +43,7 @@ export default function Categories() {
   };
 
   return (
-    <div>
+    <div className="categorie-container">
       {categories.map(({ strCategory }) => (
         <button
           type="button"
@@ -50,6 +51,7 @@ export default function Categories() {
           key={ strCategory }
           data-testid={ `${strCategory}-category-filter` }
           onClick={ (e) => handleClick(e) }
+          className="categorie-button"
         >
           {strCategory}
 
@@ -61,6 +63,7 @@ export default function Categories() {
         key="All"
         data-testid="All-category-filter"
         onClick={ () => handleAll() }
+        className="categorie-button"
       >
         All
       </button>
