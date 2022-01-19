@@ -1,5 +1,12 @@
 # Projeto APP de Receitas
 
+# Time
+- [Arthur Palomo](https://github.com/Othyose)
+- [Bernardo Notagiacomo](https://github.com/benotargiacomo)
+- [Isadora Bayma](https://github.com/isadorabayma)
+- [Gustavo Anselmo](https://github.com/GustavoAns)
+- [Walmir Lucena](https://github.com/WalmirLucena)
+
 # Sumário
 
 - [Habilidades](#habilidades)
