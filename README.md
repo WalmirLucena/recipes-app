@@ -1,16 +1,4 @@
-### Termos de uso
-
-Ao iniciar este projeto, você concorda com as diretrizes do Código de Ética e Conduta e do Manual da Pessoa Estudante da Trybe.
-
----
-
-# Boas vindas ao repositório do projeto de Receitas!
-
-Você já usa o GitHub diariamente para desenvolver os exercícios, certo? Agora, para desenvolver os projetos, você deverá seguir as instruções a seguir. Fique atento a cada passo, e se tiver qualquer dúvida, nos envie por _Slack_! #vqv 🚀
-
-Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu projeto a partir desse repositório, utilizando uma branch específica e um _Pull Request_ para colocar seus códigos.
-
----
+# Projeto APP de Receitas
 
 # Sumário
 
@@ -257,71 +245,17 @@ Lembre-se de escrever testes unitários e sinta-se livre para alterar a UI, só 
 
 ![image](https://res.cloudinary.com/drdpedroso/image/upload/c_scale,w_400/v1575815877/Screenshot_2019-12-08_at_11.37.25_kzt7rl.png)
 
-## Desenvolvimento
-
-### Data de entrega
-
-- Projeto em grupo.
-
-- Serão `10` dias de projeto.
-
-- Data de entrega para avaliação final do projeto: `DD/MM/YYYY - 14:00h`.
-
----
 
 # Instruções para entregar seu projeto
 
 ### Antes de começar a desenvolver:
 
-1. Clone o repositório
-  * `git clone git@github.com:tryber/sd-014-a-project-recipes-app.git`
-  * Entre na pasta do repositório que você acabou de clonar:
-    * `cd sd-014-a-project-recipes-app`
-  * Vá para a branch do seu grupo, com `git checkout main-group-XX && git pull`, onde `XX` é o número do seu grupo. Exemplos: `main-group-1`, `main-group-22`.
-
-2. Instale as dependências e inicialize o projeto
+1. Instale as dependências e inicialize o projeto
   * Instale as dependências:
     * `npm install`
   * Inicialize o projeto:
     * `npm start` (uma nova página deve abrir no seu navegador com um texto simples)
 
-3. Faça alterações separadas por novas branchs criadas a partir da branch `main-group-XX`, criando uma nova branch para cada demanda
-  * Verifique que você está na branch `main-group-XX`
-    * Exemplo: `git branch`
-  * Se não estiver, mude para a branch `main-group-XX`
-    * Exemplo: `git checkout main-group-XX && git pull`
-  * Agora, crie uma branch para a demanda que você vai desenvolver do seu projeto
-    * Você deve criar uma branch com uma breve descrição da demanda a ser desenvolvida
-    * Exemplo: `git checkout -b main-group-XX-cria-campo-de-input`
-
-4. Adicione as mudanças ao _stage_ do Git e faça um `commit`
-  * Verifique que as mudanças ainda não estão no _stage_
-    * Exemplo: `git status` (devem aparecer listadas as novas alterações em vermelho)
-  * Adicione o arquivo alterado ao _stage_ do Git
-      * Exemplo:
-        * `git add .` (adicionando todas as mudanças - _que estavam em vermelho_ - ao stage do Git)
-        * `git status` (devem aparecer listadas as novas alterações em verde)
-  * Faça seus `commit`
-      * Exemplo:
-        * `git commit -m 'cria componente de input`
-        * `git status` (deve aparecer uma mensagem tipo _nothing to commit_ )
-
-5. Adicione a sua branch com o novo `commit` ao repositório remoto
-  * Usando o exemplo anterior: `git push -u origin main-group-XX-cria-campo-de-input`
-
-6. Crie um novo `Pull Request` _(PR)_
-  * Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-014-a-project-recipes-app/pulls)
-  * Clique no botão verde _"New pull request"_
-  * Clique na caixa de seleção _"Compare"_ e escolha a branch do grupo, `main-group-XX`, e a sua branch **com atenção**
-  * Coloque um título para a sua _Pull Request_
-    * Exemplo: _"[GRUPO XX] Cria tela de busca"_
-  * Clique no botão verde _"Create pull request"_
-  * Adicione uma descrição para o _Pull Request_ e clique no botão verde _"Create pull request"_
-  * **Não se preocupe em preencher mais nada por enquanto!**
-  * Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-014-a-project-recipes-app/pulls) e confira que o seu _Pull Request_ está criado
-
-
-7. Assim que aprovado por pelo menos duas pessoas do seu grupo e o _Linter_ estiver adereçado, acesse **SEU** _Pull Request_ e clique no botão _"Merge pull request"_
 
 ### Durante o desenvolvimento
 
@@ -1734,30 +1668,10 @@ A rota `/explorar/bebidas/area` não deve estar disponível, retornando um erro 
 
 ***Obs: A maneira como as APIs devem ser estruturadas segue os seguintes modelos: https://www.themealdb.com/api.php e https://www.thecocktaildb.com/api.php***
 
-# Depois de terminar o desenvolvimento (opcional)
-
-Para sinalizar que o seu projeto está pronto para o _"Code Review"_ dos seus colegas, faça o seguinte:
-
-* Vá até a página **DO SEU** _Pull Request_, adicione a label de _"code-review"_ e marque seus colegas:
-
-  * No menu à direita, clique no _link_ **"Labels"** e escolha a _label_ **code-review**;
-
-  * No menu à direita, clique no _link_ **"Assignees"** e escolha **o seu usuário**;
-
-  * No menu à direita, clique no _link_ **"Reviewers"** e digite `students`, selecione o time `tryber/students-sd-06`.
-
-Caso tenha alguma dúvida, [aqui tem um video explicativo](https://vimeo.com/362189205).
 
 # Revisando um pull request
 
 Use o conteúdo sobre [Code Review](https://course.betrybe.com/real-life-engineer/code-review/) para te ajudar a revisar os _Pull Requests_.
 
-# Avisos finais
 
-Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência preenchendo o formulário. Leva menos de 3 minutos!
 
-Link: [FORMULÁRIO DE AVALIAÇÃO DE PROJETO](https://be-trybe.typeform.com/to/ZTeR4IbH)
-
-O avaliador automático não necessariamente avalia seu projeto na ordem em que os requisitos aparecem no readme. Isso acontece para deixar o processo de avaliação mais rápido. Então, não se assuste se isso acontecer, ok?
-
----
